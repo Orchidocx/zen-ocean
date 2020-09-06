@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
-
 html {
   box-sizing: border-box;
   font-family: Cinzel, sans-serif;
@@ -52,6 +50,12 @@ video {
   background: rgb(255 255 255 / 80%);
 }
 
+.timer-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #title {
   letter-spacing: 10px;
   margin-bottom: 0;
@@ -72,13 +76,35 @@ video {
 
 .time-btn {
   font-size: 48px;
-  margin: 10px;
+  margin: 20px 30px;
   cursor: pointer;
 }
 
 .time-btn:hover {
   color: #0fa842;
   animation: shake .5s forwards;
+}
+
+.btn-submit {
+  font-family: Cinzel, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: cornflowerblue;
+  background-color: whitesmoke;
+  letter-spacing: 4px;
+  outline: none;
+  border: none;
+  width: 100%;
+  height: 40px;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0px 0px 15px black;
+  transition: box-shadow .5s;
+}
+
+.btn-submit:hover {
+  transition: box-shadow .3s;
+  box-shadow: 0px 0px 25px cornflowerblue;
 }
 
 @keyframes shake {

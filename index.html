@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zen Ocean</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="imports.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="countdown.css">
+    
 </head>
 <body>
     <!-- Video Background -->
@@ -14,19 +17,33 @@
     </video>
     <div class="video-overlay"></div>
     <div class="container">
-        <div class="timer-form">
+        
+        <div class="timer-form" id="timer-form">
             <h1 id="title">Zen Ocean</h1>
             <p id="subtitle">find tranquility</p>
             <div class="timer-container">
                 <i id="time-decrease" class="fas fa-chevron-circle-left time-btn"></i>
-                <h2><span id="time">5</span> minutes</h2>
+                <h2><span id="time" value=5>5</span> minutes</h2>
                 <i id="time-increase" class="fas fa-chevron-circle-right time-btn"></i>
             </div>
-            <!-- <button class="btn-submit" id="btn-submit">Meditate</button> -->
+            <button class="btn-submit" id="btn-submit">Meditate</button>
         </div>
+
+        <div class="countdown" id="countdown" hidden>
+            <ul>
+                <li><span id="minutes">5</span>minutes</li>
+                <li><span id="seconds">0</span>seconds</li>
+            </ul> 
+        </div>
+        
+        <audio id="audio" loop hidden>
+            <source src="data/audio/oceanwaves.mp3" type="audio/mp3">
+        </audio>
     </div>
 
     <!-- Script -->
+    <script src="helperFunctions.js"></script>
+    <script src="timeDisplay.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
