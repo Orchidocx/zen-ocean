@@ -41,7 +41,6 @@ function resetTime() {
 }
 
 function countdownTimer() {
-  console.log(currentTimeValueInSeconds);
   updateTimeDisplay(currentTimeValueInSeconds);
   if (currentTimeValueInSeconds <= 0) {
     clearInterval(meditationActive);
