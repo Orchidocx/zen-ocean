@@ -13,7 +13,7 @@
 <body>
     <!-- Video Background -->
     <video class="video-background" loop muted autoplay>
-        <source src="data/video/oceanwaves.mp4"></source>
+        <source src="data/video/oceanwaves2.mp4"></source>
     </video>
     <div class="video-overlay"></div>
     <div class="container">
@@ -31,13 +31,17 @@
 
         <div class="countdown" id="countdown" hidden>
             <ul>
-                <li><span id="minutes">5</span>minutes</li>
-                <li><span id="seconds">0</span>seconds</li>
+                <li><span id="minutes"></span>minutes</li>
+                <li><span id="seconds"></span>seconds</li>
             </ul> 
+            <button class="countdown-reset-btn" id="countdown-reset-btn" hidden>meditate again</button>
         </div>
         
         <audio id="audio" loop hidden>
             <source src="data/audio/oceanwaves.mp3" type="audio/mp3">
+        </audio>
+        <audio id="audio-bell" hidden>
+            <source src="data/audio/bell.mp3" type="audio/mp3">
         </audio>
     </div>
 

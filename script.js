@@ -1,19 +1,25 @@
-const MIN_MINUTES = 5;
-const MAX_MINUTES = 10;
+const MIN_MINUTES = 1;
+const MAX_MINUTES = 60;
 const decBtn = document.getElementById('time-decrease');
 const incBtn = document.getElementById('time-increase');
 const meditateBtn = document.getElementById('btn-submit');
 const audio = document.getElementById('audio');
+const audioBell = document.getElementById('audio-bell');
 const timeValue = document.getElementById('time');
 
 const timerForm = document.getElementById('timer-form');
 const countdownContainer = document.getElementById('countdown');
+const countdownResetBtn = document.getElementById('countdown-reset-btn');
 // SetInterval variable
 let meditationActive;
 // In Minutes
 let currentTimeValue = parseInt(timeValue.getAttribute('value'));
 // Convert to seconds
 let currentTimeValueInSeconds = currentTimeValue * 60;
+
+function getCurrentTimeInSeconds() {
+  return currentTimeValue * 60;
+}
 
 
 function validateTimeValue(value) {
@@ -29,20 +35,25 @@ function adjustTime(value) {
   }
 }
 
+function resetTime() {
+  timeValue.setAttribute('value', currentTimeValue);
+  timeValue.innerText = currentTimeValue;
+}
+
 function countdownTimer() {
   console.log(currentTimeValueInSeconds);
   updateTimeDisplay(currentTimeValueInSeconds);
   if (currentTimeValueInSeconds <= 0) {
     clearInterval(meditationActive);
-    audio.pause();
-    timerForm.classList.add('timer-form');
-    timerForm.hidden = false;
+    audioBell.play();
+    unhide(countdownResetBtn);
   }
   currentTimeValueInSeconds--;
 }
 
 function startMeditate() {
-  audio.play();
+  if(audio.paused) {audio.play();}
+  currentTimeValueInSeconds = getCurrentTimeInSeconds();
   updateTimeDisplay(currentTimeValueInSeconds);
   meditationActive = setInterval(countdownTimer, 1000);
   removeClass(timerForm, 'timer-form');
@@ -50,6 +61,15 @@ function startMeditate() {
   unhide(countdownContainer);
 }
 
+function resetMeditation() {
+  addClass(timerForm, 'timer-form');
+  unhide(timerForm);
+  hide(countdownContainer);
+  hide(countdownResetBtn);
+  resetTime();
+}
+
 decBtn.addEventListener('click', () => adjustTime(-1));
 incBtn.addEventListener('click', () => adjustTime(1));
 meditateBtn.addEventListener('click', startMeditate);
+countdownResetBtn.addEventListener('click', resetMeditation);
